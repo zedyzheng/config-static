@@ -1,0 +1,6 @@
+{
+  "/config-web/*": {
+    "target": "http://192.168.2.111:8082",
+    "secure": false
+  }
+}

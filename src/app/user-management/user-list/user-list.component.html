@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-grid-list cols="12" rowHeight="70px">
+    <mat-grid-tile [colspan]="2">
+      <mat-form-field>
+        <input matInput placeholder="用户名" [(ngModel)]="params.userName">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="8">
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2">
+      <button mat-raised-button (click)="queryList(0)" class="btn primary">检索</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <button mat-raised-button (click)="showDetail()">新增</button>
+  </mat-card-title>
+
+  <mat-table [dataSource]="dataSource" table-height-auto>
+    <ng-container *ngFor="let col of columnsDef" [matColumnDef]="col.field">
+      <mat-header-cell *matHeaderCellDef>{{col.header}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row[col.field]}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="handle">
+      <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="setRole(row.id)"><span matTooltip="修改角色"><i class="fa fa-edit"></i></span></button>
+        <button mat-icon-button (click)="resetPassword(row.id)"><span matTooltip="修改密码"><i class="fa fa-key"></i></span></button>
+        <button mat-icon-button (click)="delete(row.id)"><span matTooltip="删除用户"><i class="fa fa-trash-o"></i></span></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="totalRecords" pageIndex="0" [pageSize]="20" [pageSizeOptions]="[20, 50, 100]" (page)="queryList($event.pageIndex)"></mat-paginator>
+</mat-card>

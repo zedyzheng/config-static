@@ -1,0 +1,42 @@
+.exception-body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-image: -webkit-linear-gradient(bottom, #6B77A1 0%, #737EA5 3%, #9599B3 15%, #B1B0BF 28%, #C7C1C8 41%, #D6CDCF 57%, #DFD5D3 74%, #E2D7D4 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.exception-wrapper {
+  margin: 0 auto;
+  padding-top: 100px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  width: 500px;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  opacity: .6;
+
+  &.error {
+    background-color: #e82424;
+  }
+
+  .message-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  a {
+    margin: 120px 0 100px 0;
+    padding: 10px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    transition: color .15s;
+  }
+}

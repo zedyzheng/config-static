@@ -1,0 +1,38 @@
+<form class="mat-dialog-wrapper" [formGroup]="formGroup" (ngSubmit)="saveDetail()" novalidate>
+    <h2 mat-dialog-title>{{title}}</h2>
+
+    <mat-dialog-content>
+      <mat-form-field *ngIf="!data">
+        <input matInput placeholder="用户名" formControlName="userName" />
+        <mat-error *ngIf="formGroup.get('userName').invalid">
+          用户名不能为空
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select multiple formControlName="roles" placeholder="角色">
+          <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!data">
+        <input matInput placeholder="密码" formControlName="password" />
+        <mat-error *ngIf="formGroup.get('password').invalid">
+          密码不能为空
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="应用" formControlName="accessAppId" />
+        <mat-error *ngIf="formGroup.get('accessAppId').invalid">
+          应用不能为空
+        </mat-error>
+      </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close>取消</button>
+      <button mat-raised-button type="submit" class="btn primary" [disabled]="formGroup.invalid">确定</button>
+    </mat-dialog-actions>
+  </form>

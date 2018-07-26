@@ -1,0 +1,17 @@
+<div class="layout-wrapper">
+  <!-- header部  -->
+  <top-header (onChangeNavStatus)="onChangeNavStatus()"></top-header>
+
+  <!-- body部  -->
+  <mat-sidenav-container class="sidenav-fab-container">
+    <!-- 导航部  -->
+    <mat-sidenav #sidenav mode="side" opened="{{isOpen}}">
+      <left-nav></left-nav>
+    </mat-sidenav>
+
+    <!-- 主体  -->
+    <div class="scrolling-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>

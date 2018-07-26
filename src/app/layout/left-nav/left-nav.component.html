@@ -1,0 +1,25 @@
+<!-- 导航部  -->
+<div class="nano">
+  <div class="nano-content sidebar-scroll-content">
+    <div class="menu">
+      <ul>
+        <li *ngFor="let menu of menus" class="{{menu.isOpen ? 'active-menuitem' : ''}}">
+          <a href="javascript:;" (click)="toggleMenuItem($event, menu)">
+            <i class="fa fa-fw {{menu.icon ? menu.icon : 'fa-bars'}}"></i>
+            <span>{{menu.name}}</span>
+            <i class="fa fa-fw {{menu.isOpen ? 'fa-angle-up' : 'fa-angle-down'}}"></i>
+          </a>
+
+          <ul [hidden]="!menu.isOpen">
+            <li *ngFor="let child of menu.children" class="{{child.isSelected ? 'active-menuitem' : ''}}">
+              <a href="javascript:;" routerLink="{{child.route ? ('/' + menu.route + '/' + child.route) : '/'}}" (click)="toggleSelectedStatus($event, child)">
+                <i class="fa fa-fw {{child.icon ? child.icon : 'fa-bars'}}"></i>
+                <span>{{child.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

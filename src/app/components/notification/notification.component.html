@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content>
+  <span *ngIf="isConfirm">{{content}}</span>
+  <mat-form-field *ngIf="!isConfirm" style="width: 100%">
+    <textarea matInput [(ngModel)]="result" maxlength="100" placeholder="{{content}}"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>取消</button>
+  <button mat-raised-button (click)="ok('success')">确定</button>
+</mat-dialog-actions>

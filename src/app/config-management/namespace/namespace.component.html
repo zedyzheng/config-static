@@ -1,0 +1,82 @@
+<mat-card>
+  <mat-grid-list cols="12" rowHeight="70px">
+    <mat-grid-tile [colspan]="2">
+      <mat-form-field>
+        <input matInput placeholder="所属应用" value="{{params.appId}}" disabled>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <button mat-raised-button (click)="selectApp()" color="primary">选择</button>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="6">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <button mat-raised-button (click)="queryList(0)" class="btn primary">检索</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <button mat-raised-button (click)="showDetail(null)" disabled="{{disabledQuery}}">新增</button>
+    <button mat-raised-button (click)="batchSyncList()" disabled="{{disabledBatchSync}}">批量同步</button>
+  </mat-card-title>
+
+  <mat-table [dataSource]="dataSource" table-height-auto>
+    <ng-container matColumnDef="check">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox [(ngModel)]="checkAll" (change)="onCheckAll($event.checked)"></mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox [(ngModel)]="row.checked" (change)="onCheck($event.checked)"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="appId">
+      <mat-header-cell *matHeaderCellDef>所属应用</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.appId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>状态</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.statusStr}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>名称</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <mat-header-cell *matHeaderCellDef>备注</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.comment}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="syncDate">
+      <mat-header-cell *matHeaderCellDef>同步时间</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.syncDate | date:'y-MM-dd HH:mm:ss'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastModifiedDate">
+      <mat-header-cell *matHeaderCellDef>修改时间</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.lastModifiedDate | date:'y-MM-dd HH:mm:ss'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="handle">
+      <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="showDetail(row.id)"><span matTooltip="编辑"><i class="fa fa-edit"></i></span></button>
+        <button mat-icon-button (click)="syncConfig(row.id)"><span matTooltip="同步"><i class="fa fa-refresh"></i></span></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="totalRecords" pageIndex="0" [pageSize]="20" [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+</mat-card>

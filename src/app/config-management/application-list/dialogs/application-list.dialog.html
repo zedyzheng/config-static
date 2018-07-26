@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<form class="mat-dialog-wrapper" [formGroup]="formGroup" (ngSubmit)="saveDetail()" novalidate>
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="应用ID" formControlName="appId" />
+        <mat-error *ngIf="formGroup.get('appId').hasError('pattern')">
+          只能输入字母和点
+        </mat-error>
+        <mat-error *ngIf="formGroup.get('appId').hasError('required')">
+          应用ID不能为空
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="应用名称" formControlName="name" />
+        <mat-error *ngIf="formGroup.get('name').invalid">
+          应用名称不能为空
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="部门名称" formControlName="orgName" />
+        <mat-error *ngIf="formGroup.get('orgName').invalid">
+          部门名称不能为空
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="所属人" formControlName="ownerName" />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>取消</button>
+    <button mat-raised-button type="submit" class="btn primary" [disabled]="formGroup.invalid">确定</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,31 @@
+<div class="login-body">
+  <div class="login-wrapper">
+    <div class="login-container">
+      <span class="title">后端管理系统</span>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+        <mat-grid-list cols="12" rowHeight="70px">
+          <mat-grid-tile [colspan]="12">
+            <mat-form-field>
+              <input matInput placeholder="用户名" formControlName="userName">
+              <mat-error *ngIf="loginForm.get('userName').invalid">
+                用户名不能为空
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="12">
+              <mat-form-field>
+                <input type="password" matInput placeholder="密码" formControlName="password">
+                <mat-error *ngIf="loginForm.get('password').invalid">
+                  密码不能为空
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          <mat-grid-tile [colspan]="12">
+            <button mat-raised-button class="btn primary" [disabled]="loginForm.invalid">登录</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </div>
+  </div>
+</div>

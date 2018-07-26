@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>选择应用</h2>
+
+<mat-dialog-content>
+  <mat-card>
+    <mat-grid-list cols="12" rowHeight="70px">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <input matInput placeholder="应用名称" [(ngModel)]="params.name">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="8"></mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2">
+        <button mat-raised-button (click)="queryList(0)" class="btn primary">检索</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+
+  <mat-card>
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="appId">
+        <mat-header-cell *matHeaderCellDef>应用ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.appId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="appName">
+        <mat-header-cell *matHeaderCellDef>应用名称</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns" (click)="rowClick(row)"></mat-row>
+    </mat-table>
+    <mat-paginator [length]="totalRecords" pageIndex="0" [pageSize]="20" [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>关闭</button>
+</mat-dialog-actions>

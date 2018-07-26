@@ -1,0 +1,27 @@
+<form class="mat-dialog-wrapper" (ngSubmit)="saveDetail()" novalidate>
+  <h2 mat-dialog-title>{{title}}</h2>
+
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="应用ID" value="{{appId}}" disabled />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="环境名称" value="{{name}}" disabled />
+      </mat-form-field>
+    </div>
+
+
+    <div>
+        <input placeholder="请选择上传文件" type="file" #input (change)="changeFile($event)"/>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>取消</button>
+    <button mat-raised-button type="submit" class="btn primary" [disabled]="!configFile">确定</button>
+  </mat-dialog-actions>
+</form>

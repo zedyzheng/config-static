@@ -1,0 +1,30 @@
+.mat-dialog-title {
+  margin-bottom: 0px;
+}
+
+.mat-dialog-content {
+  padding: 3px 24px;
+}
+
+.mat-card {
+  padding: 3px;
+}
+
+.mat-header-row {
+  height: 25px;
+}
+
+.mat-row {
+  height: 25px;
+  cursor: pointer;
+  min-height: 0px;
+
+  &:hover {
+    background-color: pink;
+  }
+}
+
+.mat-table {
+  height: 300px;
+  overflow-y: auto;
+}

@@ -1,0 +1,40 @@
+<form class="mat-dialog-wrapper" [formGroup]="formGroup" (ngSubmit)="saveDetail()" novalidate>
+  <h2 mat-dialog-title>{{title}}</h2>
+
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="应用Id" formControlName="appId" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="名称" formControlName="name" />
+        <mat-error *ngIf="formGroup.get('name').invalid">
+          环境名称不能为空
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="密码" formControlName="password" />
+        <mat-error *ngIf="formGroup.get('password').invalid">
+          密码不能为空
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="备注" formControlName="comment" />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>取消</button>
+    <button mat-raised-button type="submit" class="btn primary" [disabled]="formGroup.invalid">确定</button>
+  </mat-dialog-actions>
+</form>

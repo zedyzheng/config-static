@@ -1,0 +1,33 @@
+<!-- header部  -->
+<mat-toolbar>
+  <a class="topbar-logo" routerlink="/">
+    后台管理
+  </a>
+  <a href="javascript:;" class="menu-button" (click)="toggle()">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <span style="flex: 1 1 auto"></span>
+
+  <span class="user-display">
+    <a href="javascript:;" class="user-info">
+      <span class="username">{{userName}}</span>
+      <img src="assets/heihuzi.jpg">
+      <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="topbar-menu">
+      <li>
+        <a href="javascript:;" (click)="changePassord()">
+          <i class="topbar-icon fa fa-fw fa-key"></i>
+          <span class="topbar-item-name">修改密码</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;" (click)="showTopMenu=false;" routerLink="/login">
+          <i class="topbar-icon fa fa-fw fa-power-off"></i>
+          <span class="topbar-item-name">退出</span>
+        </a>
+      </li>
+    </ul>
+  </span>
+</mat-toolbar>

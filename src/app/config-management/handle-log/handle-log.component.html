@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="entityName">
+      <mat-header-cell *matHeaderCellDef>实体名称</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.entityName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="operatorName">
+      <mat-header-cell *matHeaderCellDef>操作名称</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.operatorName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>备注</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createBy">
+      <mat-header-cell *matHeaderCellDef>修改人ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.createBy | date: 'y-MM-dd H:mm:ss'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastModifiedDate">
+      <mat-header-cell *matHeaderCellDef>修改时间</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.lastModifiedDate | date: 'y-MM-dd H:mm:ss'}}</mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="handle">
+      <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="showDetail(row.id)"><span matTooltip="查看详情"><i class="fa fa-eye"></i></span></button>
+      </mat-cell>
+    </ng-container> -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="totalRecords" pageIndex="0" [pageSize]="20" [pageSizeOptions]="[20, 50, 100]" (page)="queryList($event.pageIndex)"></mat-paginator>
+</mat-card>

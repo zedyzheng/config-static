@@ -1,0 +1,26 @@
+<form class="mat-dialog-wrapper" novalidate>
+  <h2 mat-dialog-title>{{title}}</h2>
+
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="实体名称" disabled value="{{entityName}}" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="操作名称" disabled value="{{operatorName}}" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="备注" disabled value="{{description}}" />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>关闭</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,126 @@
+a {
+  display: block;
+  text-decoration: none;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.mat-toolbar {
+  height: 70px;
+
+  // 印刷样式-文字
+  color: #757575;
+
+  // 视觉-背景
+  background-color: #006cb8;
+
+  // logo部
+  .topbar-logo {
+    // img {
+    //     height: 44px;
+    //     vertical-align: middle;
+    // }
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  // nav部控制按钮
+  .menu-button {
+    margin-left: 20px;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+
+    transition: color 0.3s;
+  }
+  .menu-button:hover {
+    color: #282828;
+  }
+
+  // 用户信息显示
+  .user-display {
+    // 用户信息
+    .user-info {
+      // 用户名
+      .username {
+        margin-right: 8px;
+        vertical-align: middle;
+        color: #fff;
+        transition: color 0.3s;
+      }
+
+      // 用户图片
+      img {
+        margin-right: 8px;
+        width: 40px;
+        vertical-align: middle;
+        border: 0;
+      }
+
+      // 图标
+      .fa {
+        vertical-align: middle;
+        font-size: 16px;
+        color: #757575;
+        transition: color 0.3s;
+      }
+    }
+
+    .user-info:hover .username,
+    .user-info:hover .fa {
+      color: #282828;
+    }
+
+    &:hover .topbar-menu {
+      display: block;
+    }
+    // 用户选项
+    .topbar-menu {
+      position: absolute;
+      top: 56px;
+      right: 3px;
+      z-index: 100;
+      display: none;
+      padding: 3px 0;
+      margin: 0;
+      width: 150px;
+      font-size: .7em;
+      list-style-type: none;
+      background-color: #fff;
+      border-radius: 3px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
+      animation-name: fadeInDown;
+      animation-duration: .5s;
+
+      li {
+        a:hover {
+          background-color: #eee;
+        }
+
+        a {
+          padding: 6px 12px;
+          display: block;
+          color: #404c51;
+          transition: all .5s ease;
+
+          i {
+            vertical-align: middle;
+          }
+          span {
+            margin-left: 8px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+}

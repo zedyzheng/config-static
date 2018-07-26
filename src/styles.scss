@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+.mat-sidenav-content::-webkit-scrollbar, body::-webkit-scrollbar, mat-sidenav.sidenav::-webkit-scrollbar, .mat-table::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.mat-sidenav-content::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, mat-sidenav.sidenav::-webkit-scrollbar-thumb, .mat-table::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  outline: 1px solid #333;
+  border-radius: 10px;
+}
+.mat-sidenav-content::-webkit-scrollbar-trac, body::-webkit-scrollbar-track, mat-sidenav.sidenav::-webkit-scrollbar-track, .mat-table::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  border-radius: 10px;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+.nodata-msg {
+  position: absolute;
+  top: 80px;
+}
+
+.btn.primary {
+  color: #fff;
+  background-color: #006cb8;
+}
+
+.mat-card {
+  margin-top: 10px;
+  .mat-grid-tile {
+    .mat-select {
+      margin-top: -20px;
+    }
+  }
+
+  .mat-row {
+    height: auto;
+
+    .mat-cell {
+      word-break: break-all;
+      font-size: 12px;
+    }
+  }
+  .mat-row:hover {
+    background: #EEEEEE;
+  }
+}
+
+.mat-dialog-container {
+  .mat-dialog-actions {
+    justify-content: flex-end;
+
+    .mat-raised-button {
+      margin-left: 10px;
+    }
+  }
+}
